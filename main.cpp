@@ -24,6 +24,13 @@ void static test() {
     assert(t1 != t3);
     assert(t2 == t3);
 
+    Tuple expected;
+    expected = Tuple{8.6, -8.4, 6.2, 1.0};
+    assert((t1+t2)==expected);
+    expected = Tuple{0.0, 0.0, 0.0, 1.0};
+    assert((t1-t2)==expected);
+
+
     std::cout << "Tests passed!\n";
 
 }
