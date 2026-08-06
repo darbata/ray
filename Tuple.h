@@ -14,7 +14,7 @@ bool operator!=(Tuple t1, Tuple t2);
 
 Tuple operator+(Tuple t1, Tuple t2);
 Tuple operator-(Tuple t1, Tuple t2);
-Tuple operator~(Tuple t1);
+Tuple operator-(Tuple t);
 Tuple operator*(float s, Tuple t);
 Tuple operator*(Tuple t, float s);
 Tuple operator/(Tuple t, float s);
@@ -25,6 +25,6 @@ Tuple normalise(Tuple t);
 float dot(Tuple t1, Tuple t2);
 Tuple cross(Tuple t1, Tuple t2);
 
-std::string printTuple(Tuple t);
+void printTuple(Tuple t);
 
 #endif //RAY_TUPLE_H

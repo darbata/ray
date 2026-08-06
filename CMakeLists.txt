@@ -7,4 +7,6 @@ add_executable(ray main.cpp
         Tuple.cpp
         Tuple.h
         Colour.cpp
-        Colour.h)
+        Colour.h
+        Float.cpp
+        Float.h)

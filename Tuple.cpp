@@ -4,32 +4,25 @@
 #include <ostream>
 #include <stdexcept>
 
-const float epsilon = 0.0001;
+#include "Float.h"
 
 bool isPoint(Tuple t) {
-    return abs(t.w - 1.0) < epsilon;
+    return compare(t.w, 1.0);
 }
 
 bool isVector(Tuple t) {
-    return abs(t.w - 0.0) < epsilon;
-}
+    return compare(t.w, 0.0); }
 
 bool operator==(Tuple t1, Tuple t2) {
-    if (abs(t1.x - t2.x) >= epsilon || abs(t1.y - t2.y) >= epsilon || abs(t1.z - t2.z) >= epsilon)
-    {
-        return false;
-    }
-    return true;
-}
-
-bool operator!=(Tuple t1, Tuple t2) {
-    std::cout << t1.x << " " << t1.y << " " << t1.z << std::endl;
-    std::cout << t2.x << " " << t2.y << " " << t2.z << std::endl;
-    if (abs(t1.x - t2.x) >= epsilon || abs(t1.y - t2.y) >= epsilon || abs(t1.z - t2.z) >= epsilon)
+    if (compare(t1.x, t2.x) && compare(t1.y, t2.y) && compare(t1.z, t2.z) && compare(t1.w, t2.w))
     {
         return true;
     }
     return false;
+}
+
+bool operator!=(Tuple t1, Tuple t2) {
+    return !(t1==t2);
 }
 
 Tuple operator+(Tuple t1, Tuple t2) {
@@ -52,16 +45,12 @@ Tuple operator-(Tuple t1, Tuple t2) {
     return sum;
 }
 
-Tuple operator~(Tuple t1) {
-    if (isPoint(t1)) {
+Tuple operator-(Tuple t) {
+    if (isPoint(t)) {
         throw std::invalid_argument("Can't negate a point");
     }
 
-    float x = 0.0 - t1.x;
-    float y = 0.0 - t1.y;
-    float z = 0.0 - t1.z;
-
-    return Tuple { x, y, z, t1.w };
+    return Tuple{-t.x, -t.y, -t.z, t.w};
 }
 
 Tuple operator*(float s, Tuple t) {
@@ -115,6 +104,6 @@ Tuple cross(Tuple t1, Tuple t2) {
     };
 }
 
-std::string printTuple(Tuple t) {
+void printTuple(Tuple t) {
     std::cout << t.x << " " << t.y << " " << t.z << " " << t.w << std::endl;
 }
