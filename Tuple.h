@@ -16,6 +16,9 @@ Tuple operator+(Tuple t1, Tuple t2);
 Tuple operator-(Tuple t1, Tuple t2);
 Tuple operator~(Tuple t1);
 Tuple operator*(float s, Tuple t);
+Tuple operator*(Tuple t, float s);
+Tuple operator/(Tuple t, float s);
+
 
 std::string printTuple(Tuple t);
 

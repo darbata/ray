@@ -73,6 +73,21 @@ Tuple operator*(float s, Tuple t) {
     return Tuple { s * t.x, s * t.y, s * t.z, t.w };
 }
 
+Tuple operator*(Tuple t, float s) {
+    if (isPoint(t)) {
+        throw new std::invalid_argument("Can't scale points");
+    }
+
+    return Tuple { s * t.x, s * t.y, s * t.z, t.w };
+}
+
+Tuple operator/(Tuple t, float s) {
+    if (isPoint(t)) {
+        throw new std::invalid_argument("Can't scale points");
+    }
+    return Tuple { t.x/s,  t.y/s,  t.z/s, t.w };
+}
+
 std::string printTuple(Tuple t) {
     std::cout << t.w << " " << t.y << " " << t.z << " " << t.w << std::endl;
 }

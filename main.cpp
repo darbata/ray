@@ -22,7 +22,8 @@ void static test() {
     assert((~t2)==expected);
     expected = Tuple{8.6, -8.4, 6.2, 0.0};
     assert((2*t2)==expected);
-
+    expected = Tuple{2.15, -2.10, 1.55, 0.0};
+    assert((t2/2)==expected);
     std::cout << "tests passed" << std::endl;
 }
 
