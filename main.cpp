@@ -1,11 +1,12 @@
 #include <cassert>
 #include <iostream>
+
+#include "Colour.h"
  #include "Tuple.h"
 
 const float epsilon = 0.001f;
 
 void static test() {
-
     Tuple t1 {4.3, -4.2, 3.1, 1.0};
     assert(isPoint(t1));
 
@@ -34,11 +35,15 @@ void static test() {
     assert(c == expected);
 
 
+    auto colour = Colour{-0.5, 0.4, 1.7};
+    assert(colour.r = -0.5);
+    assert(colour.g = 0.3);
+    assert(colour.b = 1.7);
+
     std::cout << "tests passed" << std::endl;
 }
 
 int main() {
-    const auto lang = "C++";
     test();
     return 0;
 }
