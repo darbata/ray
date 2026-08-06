@@ -42,7 +42,6 @@ void static test() {
     auto c1 = Colour {0.9, 0.6, 0.75};
     auto c2 = Colour {0.7, 0.1, 0.25};
 
-
     std::cout << "tests passed" << std::endl;
 }
 
