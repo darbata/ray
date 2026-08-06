@@ -23,6 +23,7 @@ float magnitude(Tuple t);
 Tuple normalise(Tuple t);
 
 float dot(Tuple t1, Tuple t2);
+Tuple cross(Tuple t1, Tuple t2);
 
 std::string printTuple(Tuple t);
 

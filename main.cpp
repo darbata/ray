@@ -1,7 +1,6 @@
 #include <cassert>
 #include <iostream>
-
-#include "Tuple.h"
+ #include "Tuple.h"
 
 const float epsilon = 0.001f;
 
@@ -24,13 +23,18 @@ void static test() {
     assert((2*t2)==expected);
     expected = Tuple{2.15, -2.10, 1.55, 0.0};
     assert((t2/2)==expected);
-    std::cout << "tests passed" << std::endl;
     assert(magnitude(Tuple{1, 0 , 0, 0.0}) == 1);
     assert(magnitude(Tuple{0, 1 , 0, 0.0}) == 1);
     assert(magnitude(Tuple{0, 0 , 1, 0.0}) == 1);
     assert(abs(magnitude(Tuple{1, 2 , 3, 0.0}) - sqrt(14)) <= epsilon);
     assert(magnitude(normalise(t1)) == 1);
     assert(dot(Tuple{1, 2, 3, 0.0}, Tuple{2, 3, 4, 0.0}) == 20);
+    Tuple c = cross(Tuple{1, 2, 3, 0.0}, Tuple{2, 3, 4, 0.0});
+    expected = Tuple{-1, 2, -1, 0.0};
+    assert(c == expected);
+
+
+    std::cout << "tests passed" << std::endl;
 }
 
 int main() {

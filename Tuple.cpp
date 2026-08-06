@@ -34,7 +34,7 @@ bool operator!=(Tuple t1, Tuple t2) {
 
 Tuple operator+(Tuple t1, Tuple t2) {
     if (isPoint(t1) && isPoint(t2)) {
-        throw new std::invalid_argument("Can't add two points");
+        throw std::invalid_argument("Can't add two points");
     }
 
     Tuple sum = {t1.x + t2.x,t1.y + t2.y,t1.z + t2.z,t1.w + t2.w};
@@ -44,7 +44,7 @@ Tuple operator+(Tuple t1, Tuple t2) {
 
 Tuple operator-(Tuple t1, Tuple t2) {
     if (isVector(t1) && isPoint(t2)) {
-        throw new std::invalid_argument("Can't subtract a point from a vector");
+        throw std::invalid_argument("Can't subtract a point from a vector");
     }
 
     Tuple sum = {t1.x - t2.x,t1.y - t2.y,t1.z - t2.z,t1.w - t2.w};
@@ -54,7 +54,7 @@ Tuple operator-(Tuple t1, Tuple t2) {
 
 Tuple operator~(Tuple t1) {
     if (isPoint(t1)) {
-        throw new std::invalid_argument("Can't negate a point");
+        throw std::invalid_argument("Can't negate a point");
     }
 
     float x = 0.0 - t1.x;
@@ -66,7 +66,7 @@ Tuple operator~(Tuple t1) {
 
 Tuple operator*(float s, Tuple t) {
     if (isPoint(t)) {
-        throw new std::invalid_argument("Can't scale points");
+        throw std::invalid_argument("Can't scale points");
     }
 
     return Tuple { s * t.x, s * t.y, s * t.z, t.w };
@@ -74,7 +74,7 @@ Tuple operator*(float s, Tuple t) {
 
 Tuple operator*(Tuple t, float s) {
     if (isPoint(t)) {
-        throw new std::invalid_argument("Can't scale points");
+        throw std::invalid_argument("Can't scale points");
     }
 
     return Tuple { s * t.x, s * t.y, s * t.z, t.w };
@@ -82,7 +82,7 @@ Tuple operator*(Tuple t, float s) {
 
 Tuple operator/(Tuple t, float s) {
     if (isPoint(t)) {
-        throw new std::invalid_argument("Can't scale points");
+        throw std::invalid_argument("Can't scale points");
     }
     return Tuple { t.x/s,  t.y/s,  t.z/s, t.w };
 }
@@ -102,6 +102,19 @@ float dot(Tuple t1, Tuple t2) {
     return t1.x * t2.x + t1.y * t2.y + t1.z * t2.z + t1.w * t2.w;
 }
 
+Tuple cross(Tuple t1, Tuple t2) {
+    if (isPoint(t1) || isPoint(t2)) {
+        throw std::invalid_argument("Can't cross a point");
+    }
+
+    return Tuple {
+        (t1.y * t2.z) - (t2.y * t1.z),
+        (t2.x * t1.z) - (t1.x * t2.z),
+        (t1.x * t2.y) - (t2.x * t1.y),
+        0.0
+    };
+}
+
 std::string printTuple(Tuple t) {
-    std::cout << t.w << " " << t.y << " " << t.z << " " << t.w << std::endl;
+    std::cout << t.x << " " << t.y << " " << t.z << " " << t.w << std::endl;
 }
