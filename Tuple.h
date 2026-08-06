@@ -22,6 +22,8 @@ Tuple operator/(Tuple t, float s);
 float magnitude(Tuple t);
 Tuple normalise(Tuple t);
 
+float dot(Tuple t1, Tuple t2);
+
 std::string printTuple(Tuple t);
 
 #endif //RAY_TUPLE_H

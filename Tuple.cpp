@@ -98,6 +98,10 @@ Tuple normalise(Tuple t) {
     };
 }
 
+float dot(Tuple t1, Tuple t2) {
+    return t1.x * t2.x + t1.y * t2.y + t1.z * t2.z + t1.w * t2.w;
+}
+
 std::string printTuple(Tuple t) {
     std::cout << t.w << " " << t.y << " " << t.z << " " << t.w << std::endl;
 }

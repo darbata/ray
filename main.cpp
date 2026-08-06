@@ -30,6 +30,7 @@ void static test() {
     assert(magnitude(Tuple{0, 0 , 1, 0.0}) == 1);
     assert(abs(magnitude(Tuple{1, 2 , 3, 0.0}) - sqrt(14)) <= epsilon);
     assert(magnitude(normalise(t1)) == 1);
+    assert(dot(Tuple{1, 2, 3, 0.0}, Tuple{2, 3, 4, 0.0}) == 20);
 }
 
 int main() {
