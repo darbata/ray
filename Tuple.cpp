@@ -88,11 +88,14 @@ Tuple operator/(Tuple t, float s) {
 }
 
 float magnitude(Tuple t) {
-    if (isPoint(t)) {
-        throw new std::invalid_argument("Can't magnitude points");
-    }
+    return sqrt(pow(t.x,2) + pow(t.y,2) + pow(t.z,2) + pow(t.w,2));
+}
 
-    return sqrt(pow(t.x,2) + pow(t.y,2) + pow(t.z,2));
+Tuple normalise(Tuple t) {
+    float m = magnitude(t);
+    return Tuple {
+        t.x/m,t.y/m,t.z/m,t.w/m
+    };
 }
 
 std::string printTuple(Tuple t) {
