@@ -20,7 +20,12 @@ void static test() {
     assert(std::abs(t2.z - 3.1) < epsilon);
     assert(std::abs(t2.w - 0.0) < epsilon);
 
+    Tuple t3 {4.3, -4.2, 3.1, 0.0};
+    assert(t1 != t3);
+    assert(t2 == t3);
+
     std::cout << "Tests passed!\n";
+
 }
 
 int main() {
