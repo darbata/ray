@@ -1,18 +1,30 @@
+#include <cassert>
 #include <iostream>
 
-// TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+#include "Tuple.h"
+
+const float epsilon = 0.001f;
+
+void static test() {
+
+    // Point
+    Tuple t1 {4.3, -4.2, 3.1, 1.0};
+    assert(std::abs(t1.x - 4.3) < epsilon);
+    assert(std::abs(t1.y - -4.2) < epsilon);
+    assert(std::abs(t1.z - 3.1) < epsilon);
+    assert(std::abs(t1.w - 1.0) < epsilon);
+
+    Tuple t2 {4.3, -4.2, 3.1, 0.0};
+    assert(std::abs(t2.x - 4.3) < epsilon);
+    assert(std::abs(t2.y - -4.2) < epsilon);
+    assert(std::abs(t2.z - 3.1) < epsilon);
+    assert(std::abs(t2.w - 0.0) < epsilon);
+
+    std::cout << "Tests passed!\n";
+}
 
 int main() {
-    // TIP Press <shortcut actionId="RenameElement"/> when your caret is at the <b>lang</b> variable name to see how CLion can help you rename it.
-
     const auto lang = "C++";
-    std::cout << "Hello and welcome to " << lang << "!\n";
-
-    for (int i = 1; i <= 5; i++) {
-        // TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        std::cout << "i = " << i << std::endl;
-    }
-
+    test();
     return 0;
-    // TIP See CLion help at <a href="https://www.jetbrains.com/help/clion/">jetbrains.com/help/clion/</a>. Also, you can try interactive lessons for CLion by selecting 'Help | Learn IDE Features' from the main menu.
 }

@@ -3,4 +3,6 @@ project(ray)
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_executable(ray main.cpp)
+add_executable(ray main.cpp
+        Tuple.cpp
+        Tuple.h)
