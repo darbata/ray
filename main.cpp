@@ -25,6 +25,10 @@ void static test() {
     expected = Tuple{2.15, -2.10, 1.55, 0.0};
     assert((t2/2)==expected);
     std::cout << "tests passed" << std::endl;
+    assert(magnitude(Tuple{1, 0 , 0, 0.0}) == 1);
+    assert(magnitude(Tuple{0, 1 , 0, 0.0}) == 1);
+    assert(magnitude(Tuple{0, 0 , 1, 0.0}) == 1);
+    assert(magnitude(Tuple{0, 0 , 2, 0.0}) == 2);
 }
 
 int main() {

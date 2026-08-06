@@ -6,7 +6,6 @@
 
 const float epsilon = 0.0001;
 
-
 bool isPoint(Tuple t) {
     return abs(t.w - 1.0) < epsilon;
 }
@@ -86,6 +85,14 @@ Tuple operator/(Tuple t, float s) {
         throw new std::invalid_argument("Can't scale points");
     }
     return Tuple { t.x/s,  t.y/s,  t.z/s, t.w };
+}
+
+float magnitude(Tuple t) {
+    if (isPoint(t)) {
+        throw new std::invalid_argument("Can't magnitude points");
+    }
+
+    return sqrt(pow(t.x,2) + pow(t.y,2) + pow(t.z,2));
 }
 
 std::string printTuple(Tuple t) {

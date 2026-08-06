@@ -19,6 +19,7 @@ Tuple operator*(float s, Tuple t);
 Tuple operator*(Tuple t, float s);
 Tuple operator/(Tuple t, float s);
 
+float magnitude(Tuple t);
 
 std::string printTuple(Tuple t);
 
