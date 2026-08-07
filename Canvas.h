@@ -11,14 +11,15 @@
 
 class Canvas {
 public:
+    std::size_t height, width;
     Canvas(int width, int height);
     void write_pixel(int x, int y, Colour colour);
     Colour at(int x, int y);
 private:
-    std::size_t height, width;
     std::unique_ptr<Colour[]> pixels;
     bool valid(int x, int y);
 };
 
+void canvas_to_ppm(Canvas* canvas);
 
 #endif //RAY_CANVAS_H

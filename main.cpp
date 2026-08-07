@@ -53,5 +53,6 @@ int main() {
     printColour(c.at(20, 20));
     c.write_pixel(20, 20, Colour{1.0, 1.0, 1.0});
     printColour(c.at(20, 20));
+    canvas_to_ppm(&c);
     return 0;
 }
