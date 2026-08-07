@@ -9,4 +9,6 @@ add_executable(ray main.cpp
         Colour.cpp
         Colour.h
         Float.cpp
-        Float.h)
+        Float.h
+        Canvas.cpp
+        Canvas.h)

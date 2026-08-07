@@ -6,6 +6,8 @@
 #include "Tuple.h"
 #include <cmath>
 
+#include "Canvas.h"
+
 void static test() {
     Tuple t1 {4.3, -4.2, 3.1, 1.0};
     assert(isPoint(t1));
@@ -47,5 +49,9 @@ void static test() {
 
 int main() {
     test();
+    Canvas c = Canvas(40, 40);
+    printColour(c.at(20, 20));
+    c.write_pixel(20, 20, Colour{1.0, 1.0, 1.0});
+    printColour(c.at(20, 20));
     return 0;
 }
