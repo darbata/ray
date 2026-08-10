@@ -9,5 +9,9 @@
 
 typedef std::vector<std::vector<float>> Matrix;
 
+bool operator==(Matrix a, Matrix b);
+bool operator!=(Matrix a, Matrix b);
+
+
 
 #endif //RAY_MATRIX_H
