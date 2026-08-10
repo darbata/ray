@@ -24,7 +24,9 @@ target_include_directories(raylib PUBLIC src)
 add_executable(ray src/main.cpp)
 target_link_libraries(ray PRIVATE raylib)
 
-add_executable(tests tests/matrix_test.cpp)
+add_executable(tests tests/matrix_test.cpp
+        tests/tuple_test.cpp
+        tests/colour_test.cpp)
 target_link_libraries(tests PRIVATE raylib GTest::gtest_main)
 
 include(GoogleTest)
