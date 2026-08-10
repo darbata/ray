@@ -7,6 +7,7 @@
 #include <cmath>
 
 #include "Canvas.h"
+#include "Matrix.h"
 
 void static test() {
     Tuple t1 {4.3, -4.2, 3.1, 1.0};
@@ -43,6 +44,17 @@ void static test() {
 
     auto c1 = Colour {0.9, 0.6, 0.75};
     auto c2 = Colour {0.7, 0.1, 0.25};
+
+    Matrix m = {
+        {1, 2, 3, 4},
+        {5.5, 6.5, 7.5, 8.5},
+        {9, 10, 11, 12},
+        {13.5, 14.5, 15.5, 16.5},
+    };
+
+    assert(m[0][0] == 1);
+    assert(m[3][3] == 16.5);
+
 
     std::cout << "tests passed" << std::endl;
 }

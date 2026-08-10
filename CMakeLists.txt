@@ -11,4 +11,6 @@ add_executable(ray main.cpp
         Float.cpp
         Float.h
         Canvas.cpp
-        Canvas.h)
+        Canvas.h
+        Matrix.cpp
+        Matrix.h)
