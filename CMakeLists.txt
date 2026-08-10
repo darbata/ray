@@ -3,14 +3,29 @@ project(ray)
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_executable(ray main.cpp
-        Tuple.cpp
-        Tuple.h
-        Colour.cpp
-        Colour.h
-        Float.cpp
-        Float.h
-        Canvas.cpp
-        Canvas.h
-        Matrix.cpp
-        Matrix.h)
+include(FetchContent)
+FetchContent_Declare(
+        googletest
+        URL https://github.com/google/googletest/releases/download/v1.17.0/googletest-1.17.0.tar.gz
+)
+FetchContent_MakeAvailable(googletest)
+
+enable_testing()
+
+add_library(raylib
+        src/Tuple.cpp
+        src/Colour.cpp
+        src/Float.cpp
+        src/Canvas.cpp
+        src/Matrix.cpp
+)
+target_include_directories(raylib PUBLIC src)
+
+add_executable(ray src/main.cpp)
+target_link_libraries(ray PRIVATE raylib)
+
+add_executable(tests tests/matrix_test.cpp)
+target_link_libraries(tests PRIVATE raylib GTest::gtest_main)
+
+include(GoogleTest)
+gtest_discover_tests(tests)
