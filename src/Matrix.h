@@ -15,6 +15,7 @@ Tuple operator*(const Matrix& a, const Tuple& b);
 Matrix transpose(const Matrix& a);
 Matrix submatrix(const Matrix& a, int row, int col);
 Matrix inverse(const Matrix& a);
+Matrix identity();
 
 Matrix translation(float x, float y, float z);
 Matrix scaling(float x, float y, float z);

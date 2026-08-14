@@ -21,7 +21,10 @@ add_library(raylib
 )
 target_include_directories(raylib PUBLIC src)
 
-add_executable(ray src/main.cpp)
+add_executable(ray src/main.cpp
+        src/Transform.cpp
+        src/Transformation.h
+        src/Transformation.h)
 target_link_libraries(ray PRIVATE raylib)
 
 add_executable(tests tests/matrix_test.cpp

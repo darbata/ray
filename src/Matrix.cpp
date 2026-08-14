@@ -113,6 +113,15 @@ Matrix inverse(const Matrix &a) {
     return transpose(result);
 }
 
+Matrix identity() {
+    return {
+        {1, 0, 0, 0},
+        {0, 1, 0, 0},
+        {0, 0, 1, 0},
+        {0, 0, 0, 1},
+    };
+}
+
 Matrix translation(float x, float y, float z) {
     return {
         {1, 0, 0, x},
