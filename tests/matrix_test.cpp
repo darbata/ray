@@ -1,3 +1,4 @@
+#include <complex>
 #include <expected>
 
 #include "../src/Matrix.h"
@@ -357,4 +358,43 @@ TEST_F(MatrixTest, ReflectionByScaling) {
     Tuple v {-4, 6, 8, 0};
     Tuple expected {4, 6, 8, 0};
     EXPECT_TRUE(scaling(-1, 1, 1) * v == expected);
+}
+
+
+TEST_F(MatrixTest, RotatingPointAroundXAxis) {
+    Tuple p {0, 1, 0, 1};
+    auto half_quarter = rotation_x(M_PI / 4);
+    auto full_quarter = rotation_x(M_PI / 2);
+    Tuple half_expected {0, std::sqrt(2.0f) / 2, std::sqrt(2.0f) / 2, 1};
+    Tuple full_expected {0, 0, 1, 1};
+    EXPECT_TRUE(half_quarter * p == half_expected);
+    EXPECT_TRUE(full_quarter * p == full_expected);
+}
+
+TEST_F(MatrixTest, InverseOfXRotationRotatesOppositeDirection) {
+    Tuple p {0, 1, 0, 1};
+    auto half_quarter = rotation_x(M_PI / 4);
+    auto inv = inverse(half_quarter);
+    Tuple expected {0, std::sqrt(2.0f) / 2, -std::sqrt(2.0f) / 2, 1};
+    EXPECT_TRUE(inv * p == expected);
+}
+
+TEST_F(MatrixTest, RotatingPointAroundYAxis) {
+    Tuple p {0, 0, 1, 1};
+    auto half_quarter = rotation_y(M_PI / 4);
+    auto full_quarter = rotation_y(M_PI / 2);
+    Tuple half_expected {std::sqrt(2.0f) / 2, 0, std::sqrt(2.0f) / 2, 1};
+    Tuple full_expected {1, 0, 0, 1};
+    EXPECT_TRUE(half_quarter * p == half_expected);
+    EXPECT_TRUE(full_quarter * p == full_expected);
+}
+
+TEST_F(MatrixTest, RotatingPointAroundZAxis) {
+    Tuple p {0, 1, 0, 1};
+    auto half_quarter = rotation_z(M_PI / 4);
+    auto full_quarter = rotation_z(M_PI / 2);
+    Tuple half_expected {-std::sqrt(2.0f) / 2, std::sqrt(2.0f) / 2, 0, 1};
+    Tuple full_expected {-1, 0, 0, 1};
+    EXPECT_TRUE(half_quarter * p == half_expected);
+    EXPECT_TRUE(full_quarter * p == full_expected);
 }

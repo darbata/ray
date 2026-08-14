@@ -115,7 +115,7 @@ Matrix inverse(const Matrix &a) {
 }
 
 Matrix translation(float x, float y, float z) {
-    return Matrix {
+    return {
         {1, 0, 0, x},
         {0, 1, 0, y},
         {0, 0, 1, z},
@@ -125,10 +125,37 @@ Matrix translation(float x, float y, float z) {
 
 // scale by negative value to achieve reflection
 Matrix scaling(float x, float y, float z) {
-    return Matrix {
+    return {
         {x, 0, 0, 0},
         {0, y, 0, 0},
         {0, 0, z, 0},
+        {0, 0, 0, 1},
+    };
+}
+
+Matrix rotation_x(float angle) {
+    return {
+        {1, 0, 0, 0},
+        {0, cosf(angle), -sinf(angle), 0},
+        {0, sinf(angle), cosf(angle), 0},
+        {0, 0, 0, 1}
+    };
+}
+
+Matrix rotation_y(float angle) {
+    return {
+        {cosf(angle), 0, sinf(angle), 0},
+        {0, 1, 0, 0},
+        {-sinf(angle), 0, cosf(angle), 0},
+        {0, 0, 0, 1}
+    };
+}
+
+Matrix rotation_z(float angle) {
+    return {
+        {cosf(angle), -sinf(angle), 0, 0},
+        {sinf(angle), cosf(angle), 0, 0},
+        {0, 0, 1, 0},
         {0, 0, 0, 1},
     };
 }

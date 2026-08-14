@@ -17,6 +17,9 @@ Matrix submatrix(const Matrix& a, int row, int col);
 Matrix inverse(const Matrix& a);
 Matrix translation(float x, float y, float z);
 Matrix scaling(float x, float y, float z);
+Matrix rotation_x(float angle);
+Matrix rotation_y(float angle);
+Matrix rotation_z(float angle);
 
 float determinant(const Matrix& a);
 float minor(const Matrix& a, int row, int col);
