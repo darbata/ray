@@ -95,8 +95,23 @@ Matrix submatrix(const Matrix &a, int row, int col) {
 
 }
 
-Matrix invert(const Matrix &a) {
-    return {};
+Matrix inverse(const Matrix &a) {
+    auto d = determinant(a);
+    if (d == 0) {
+        throw std::logic_error("Matrix invert not possible as determinant is 0");
+    }
+
+    Matrix result {};
+
+    for (int i = 0; i < a.size(); i++) {
+        result.emplace_back();
+        for (int j = 0; j < a[0].size(); j++) {
+            auto c = cofactor(a, i, j) / d;
+            result.back().push_back(c);
+        }
+    }
+
+    return transpose(result);
 }
 
 float determinant(const Matrix &a) {
