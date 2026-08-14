@@ -41,3 +41,13 @@ Matrix operator* (const Matrix& a, const Matrix& b) {
 
     return result;
 }
+
+Tuple operator*(const Matrix &A, const Tuple &v) {
+    std::vector<float> dimensions {};
+    for (int i = 0; i < A.size(); i++) {
+        Tuple a_row_vec {A[i][0], A[i][1], A[i][2], A[i][3]};
+        dimensions.push_back(dot(a_row_vec, v));
+    }
+
+    return Tuple(dimensions[0], dimensions[1], dimensions[2], dimensions[3]);
+}

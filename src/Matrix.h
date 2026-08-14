@@ -2,11 +2,14 @@
 #define RAY_MATRIX_H
 #include <vector>
 
+#include "Tuple.h"
+
 typedef std::vector<std::vector<float>> Matrix;
 
 bool operator==(Matrix a, Matrix b);
 bool operator!=(Matrix a, Matrix b);
 
 Matrix operator*(const Matrix& a, const Matrix& b);
+Tuple operator*(const Matrix& a, const Tuple& b);
 
 #endif //RAY_MATRIX_H

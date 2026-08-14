@@ -1,6 +1,8 @@
 #include "../src/Matrix.h"
 #include <gtest/gtest.h>
 
+#include "Tuple.h"
+
 class MatrixTest : public ::testing::Test {
 protected:
     Matrix m = {
@@ -37,7 +39,7 @@ TEST_F(MatrixTest, NotEqualWhenAnyElementDiffers) {
 }
 
 
-TEST_F(MatrixTest, Multiplication) {
+TEST_F(MatrixTest, MatrixMatrixMultiplication) {
     Matrix A = {
         {1, 2, 3, 4},
         {5, 6, 7, 8},
@@ -59,4 +61,19 @@ TEST_F(MatrixTest, Multiplication) {
     };
 
     EXPECT_EQ(A*B, expected);
+}
+
+TEST_F(MatrixTest, MatrixVectorMultiplication) {
+    Matrix A = {
+        {1, 2, 3, 4},
+        {2, 4, 4, 2},
+        {8, 6, 4, 1},
+        {0, 0, 0, 1} // identity last row
+    };
+
+    Tuple v = {1, 2, 3, 1};
+
+    Tuple expected {18, 24, 33, 1};
+    Tuple result = A*v;
+
 }
