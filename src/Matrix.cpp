@@ -114,6 +114,15 @@ Matrix inverse(const Matrix &a) {
     return transpose(result);
 }
 
+Matrix translation(float x, float y, float z) {
+    return Matrix {
+        {1, 0, 0, x},
+        {0, 1, 0, y},
+        {0, 0, 1, z},
+        {0, 0, 0, 1},
+    };
+}
+
 float determinant(const Matrix &a) {
     if (a.size() != a[0].size()) {
         throw std::logic_error("Matrix determinant not possible on non-square matrix");
