@@ -159,12 +159,45 @@ TEST_F(MatrixTest, Submatrix2) {
     EXPECT_EQ(submatrix(A, 0, 2), expected);
 }
 
-TEST_F(MatrixTest, Minor) {
+TEST_F(MatrixTest, MinorAndCofactor) {
     Matrix A {
         {3, 5, 0},
         {2, -1, -7},
         {6, -1, 5}
     };
 
+    EXPECT_EQ(minor(A, 0, 0), -12);
+    EXPECT_EQ(cofactor(A, 0, 0), -12);
     EXPECT_EQ(minor(A, 1, 0), 25);
+    EXPECT_EQ(cofactor(A, 1, 0), -25);
 }
+
+TEST_F(MatrixTest, Determinant3) {
+    Matrix A {
+        {1, 2, 6},
+        {-5, 8, -4},
+        {2, 6, 4}
+    };
+
+    EXPECT_EQ(cofactor(A, 0, 0), 56);
+    EXPECT_EQ(cofactor(A, 0, 1), 12);
+    EXPECT_EQ(cofactor(A, 0, 2), -46);
+    EXPECT_EQ(determinant(A), -196);
+}
+
+TEST_F(MatrixTest, Determinant4) {
+    Matrix A {
+        {-2, -8, 3, 5},
+        {-3, 1, 7, 3},
+        {1, 2, -9, 6},
+        {-6, 7, 7, -9}
+    };
+
+    EXPECT_EQ(cofactor(A, 0, 0), 690);
+    EXPECT_EQ(cofactor(A, 0, 1), 447);
+    EXPECT_EQ(cofactor(A, 0, 2), 210);
+    EXPECT_EQ(cofactor(A, 0, 3), 51);
+    EXPECT_EQ(determinant(A), -4071);
+}
+
+

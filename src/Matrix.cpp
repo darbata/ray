@@ -90,18 +90,36 @@ Matrix submatrix(const Matrix &a, int row, int col) {
         }
     }
 
-    print_matrix(result);
 
     return result;
 
 }
 
-float minor(const Matrix &a, int row, int col) {
-    if (a.size() != 3 || a[0].size() != a.size()) {
-        throw std::logic_error("Must be 3x3 matrix");
+float determinant(const Matrix &a) {
+    if (a.size() != a[0].size()) {
+        throw std::logic_error("Matrix determinant not possible on non-square matrix");
     }
 
-    return determinant2(submatrix(a, row, col));
+    if (a.size() == 2) {
+        return (a[0][0] * a[1][1]) - (a[1][0] * a[0][1]);
+    }
+
+    float d {};
+
+    for (int col = 0; col < a[0].size(); col++) {
+        d += a[0][col] *  cofactor(a, 0, col);
+    }
+
+    return d;
+}
+
+float minor(const Matrix &a, int row, int col) {
+    return determinant(submatrix(a, row, col));
+}
+
+float cofactor(const Matrix &a, int row, int col) {
+    float m = minor(a, row, col);
+    return (row + col) % 2 == 0 ? m : float(0.0 - m);
 }
 
 float determinant2(const Matrix &a) {
