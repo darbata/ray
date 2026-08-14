@@ -124,7 +124,7 @@ TEST_F(MatrixTest, TransposeMatrix) {
     EXPECT_EQ(transpose(A), transposed);
 }
 
-TEST_F(MatrixTest, Submatrix) {
+TEST_F(MatrixTest, Submatrix4) {
     Matrix A {
         {1, 2, 3, 4},
         {5, 6, 7, 8},
@@ -140,4 +140,19 @@ TEST_F(MatrixTest, Submatrix) {
     };
 
     EXPECT_EQ(submatrix(A, 1, 2), expected);
+}
+
+TEST_F(MatrixTest, Submatrix2) {
+    Matrix A {
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9},
+    };
+
+    Matrix  expected {
+        {4, 5},
+        {7, 8},
+    };
+
+    EXPECT_EQ(submatrix(A, 0, 2), expected);
 }

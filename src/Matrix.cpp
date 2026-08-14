@@ -1,6 +1,11 @@
 #include "Matrix.h"
+
+#include <iostream>
+
 #include "Float.h"
 #include "Tuple.h"
+
+void print_matrix(const Matrix &a);
 
 bool operator==(Matrix a, Matrix b) {
     for (int i = 0; i < a.size(); i++) {
@@ -80,9 +85,11 @@ Matrix submatrix(const Matrix &a, int row, int col) {
         result.emplace_back();
         for (int j = 0; j < a[0].size(); j++) {
             if (j == col) continue;
-            result[i].push_back(a[i][j]);
+            result.back().push_back(a[i][j]);
         }
     }
+
+    print_matrix(result);
 
     return result;
 
@@ -94,6 +101,15 @@ float determinant2(const Matrix &a) {
     }
 
     return (a[0][0] * a[1][1]) - (a[1][0] * a[0][1]);
+}
+
+void print_matrix(const Matrix &a) {
+    for (int i = 0; i < a.size(); i++) {
+        for (int j = 0; j < a[0].size(); j++) {
+            std::cout << a[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
 }
 
 
