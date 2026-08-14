@@ -1,7 +1,3 @@
-//
-// Created by Darren Batarina on 6/8/2026.
-//
-
 #ifndef RAY_FLOAT_H
 #define RAY_FLOAT_H
 
