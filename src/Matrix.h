@@ -15,11 +15,13 @@ Tuple operator*(const Matrix& a, const Tuple& b);
 Matrix transpose(const Matrix& a);
 Matrix submatrix(const Matrix& a, int row, int col);
 Matrix inverse(const Matrix& a);
+
 Matrix translation(float x, float y, float z);
 Matrix scaling(float x, float y, float z);
 Matrix rotation_x(float angle);
 Matrix rotation_y(float angle);
 Matrix rotation_z(float angle);
+Matrix shear(float xy, float xz, float yx, float yz, float zx, float zy);
 
 float determinant(const Matrix& a);
 float minor(const Matrix& a, int row, int col);

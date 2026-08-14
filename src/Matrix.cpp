@@ -6,7 +6,6 @@
 #include "Tuple.h"
 
 void print_matrix(const Matrix &a);
-float determinant(const Matrix &a);
 
 bool operator==(Matrix a, Matrix b) {
     for (int i = 0; i < a.size(); i++) {
@@ -157,6 +156,15 @@ Matrix rotation_z(float angle) {
         {sinf(angle), cosf(angle), 0, 0},
         {0, 0, 1, 0},
         {0, 0, 0, 1},
+    };
+}
+
+Matrix shear(float xy, float xz, float yx, float yz, float zx, float zy) {
+    return {
+        {1, xy, xz, 0},
+        {yx, 1, yz, 0},
+        {zx, zy, 1, 0},
+        {0, 0, 0, 1}
     };
 }
 
