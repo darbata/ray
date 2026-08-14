@@ -14,10 +14,9 @@ Tuple operator*(const Matrix& a, const Tuple& b);
 
 Matrix transpose(const Matrix& a);
 Matrix submatrix(const Matrix& a, int row, int col);
+Matrix invert(const Matrix& a);
 
 float determinant(const Matrix& a);
-
-
 float minor(const Matrix& a, int row, int col);
 float cofactor(const Matrix& a, int row, int col);
 

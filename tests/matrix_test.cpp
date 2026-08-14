@@ -200,4 +200,44 @@ TEST_F(MatrixTest, Determinant4) {
     EXPECT_EQ(determinant(A), -4071);
 }
 
+// Testing an invertible matrix for invertibility
+// |  6 |  4 |  4 |  4 |
+// |  5 |  5 |  7 |  6 |
+// |  4 | -9 |  3 | -7 |
+// |  9 |  1 |  7 | -6 |
+// determinant(A) = -2120
+// A is invertible
+//
+// Testing a noninvertible matrix for invertibility
+// Given the following 4x4 matrix A:
+//  	    | -4 |  2 | -2 | -3 |
+//  	    |  9 |  6 |  2 |  6 |
+//  	    |  0 | -5 |  1 | -5 |
+//  	    |  0 |  0 |  0 |  0 |
+//Then determinant(A) = 0
+
+TEST_F(MatrixTest, InvertibleMatrix) {
+    Matrix A {
+        {6, 4, 4, 4},
+        {5, 5, 7, 6},
+        {4, -9, 3, -7},
+        {9, 1, 7, -6}
+    };
+
+    // Matrix is invertible
+    EXPECT_EQ(determinant(A), -2120);
+}
+
+TEST_F(MatrixTest, NonInvertibleMatrix) {
+    Matrix A {
+        {-4, 2, -2, -3},
+        {9, 6, 2, 6},
+        {0, -5, 1, -5},
+        {0, 0, 0, 0}
+    };
+
+    // Matrix is NOT invertible
+    EXPECT_EQ(determinant(A), 0);
+}
+
 

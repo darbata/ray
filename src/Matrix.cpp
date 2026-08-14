@@ -6,7 +6,7 @@
 #include "Tuple.h"
 
 void print_matrix(const Matrix &a);
-float determinant2(const Matrix &a);
+float determinant(const Matrix &a);
 
 bool operator==(Matrix a, Matrix b) {
     for (int i = 0; i < a.size(); i++) {
@@ -95,6 +95,10 @@ Matrix submatrix(const Matrix &a, int row, int col) {
 
 }
 
+Matrix invert(const Matrix &a) {
+    return {};
+}
+
 float determinant(const Matrix &a) {
     if (a.size() != a[0].size()) {
         throw std::logic_error("Matrix determinant not possible on non-square matrix");
@@ -122,14 +126,6 @@ float cofactor(const Matrix &a, int row, int col) {
     return (row + col) % 2 == 0 ? m : float(0.0 - m);
 }
 
-float determinant2(const Matrix &a) {
-    if (a.size() != 2 || a[0].size() != a.size()) {
-        throw std::logic_error("this function only acts on 2x2 matrices");
-    }
-
-    return (a[0][0] * a[1][1]) - (a[1][0] * a[0][1]);
-}
-
 void print_matrix(const Matrix &a) {
     for (int i = 0; i < a.size(); i++) {
         for (int j = 0; j < a[0].size(); j++) {
@@ -140,10 +136,3 @@ void print_matrix(const Matrix &a) {
 }
 
 
-// float determinant3(const Matrix &a) {
-//     if (a.size() != 2 || a[0].size() != a.size()) {
-//         throw std::logic_error("this function only acts on 2x2 matrices");
-//     }
-//
-//
-// }
