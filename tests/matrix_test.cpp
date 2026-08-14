@@ -330,7 +330,31 @@ TEST_F(MatrixTest, InverseTranslation) {
     EXPECT_TRUE(inverse(translation(5, -3, 2)) * point == expected);
 }
 
-TEST_F(MatrixTest, TranslationIngoresVectors) {
+TEST_F(MatrixTest, TranslationIgnoresVectors) {
     Tuple v {-3, 4, 5, 0};
     EXPECT_TRUE(translation(5, -3, 2) * v == v);
+}
+
+TEST_F(MatrixTest, ScalingPoint) {
+    Tuple p {-4, 6, 8, 1};
+    Tuple expected {-8, 18, 32, 1};
+    EXPECT_TRUE(scaling(2, 3, 4) * p == expected);
+}
+
+TEST_F(MatrixTest, ScalingVector) {
+    Tuple v {-4, 6, 8, 0};
+    Tuple expected {-8, 18, 32, 0};
+    EXPECT_TRUE(scaling(2, 3, 4) * v == expected);
+}
+
+TEST_F(MatrixTest, ScalingVectorByInverse) {
+    Tuple v {-4, 6, 8, 0};
+    Tuple expected {-2, 2, 2, 0};
+    EXPECT_TRUE(inverse(scaling(2, 3, 4)) * v == expected);
+}
+
+TEST_F(MatrixTest, ReflectionByScaling) {
+    Tuple v {-4, 6, 8, 0};
+    Tuple expected {4, 6, 8, 0};
+    EXPECT_TRUE(scaling(-1, 1, 1) * v == expected);
 }

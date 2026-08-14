@@ -123,6 +123,16 @@ Matrix translation(float x, float y, float z) {
     };
 }
 
+// scale by negative value to achieve reflection
+Matrix scaling(float x, float y, float z) {
+    return Matrix {
+        {x, 0, 0, 0},
+        {0, y, 0, 0},
+        {0, 0, z, 0},
+        {0, 0, 0, 1},
+    };
+}
+
 float determinant(const Matrix &a) {
     if (a.size() != a[0].size()) {
         throw std::logic_error("Matrix determinant not possible on non-square matrix");
