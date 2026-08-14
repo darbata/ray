@@ -64,16 +64,28 @@ TEST_F(MatrixTest, MatrixMatrixMultiplication) {
 }
 
 TEST_F(MatrixTest, MatrixVectorMultiplication) {
-    Matrix A = {
+    Matrix A {
         {1, 2, 3, 4},
         {2, 4, 4, 2},
         {8, 6, 4, 1},
         {0, 0, 0, 1} // identity last row
     };
 
-    Tuple v = {1, 2, 3, 1};
+    Tuple v {1, 2, 3, 1};
 
     Tuple expected {18, 24, 33, 1};
     Tuple result = A*v;
 
+    EXPECT_EQ(expected, result);
+}
+
+TEST_F(MatrixTest, IdentityMatrix) {
+    Matrix I {
+        {1, 0, 0, 0},
+        {0, 1, 0, 0},
+        {0, 0, 1, 0},
+        {0, 0, 0, 1},
+    };
+    Tuple v {1, 2, 3, 1};
+    EXPECT_EQ(I*v, v);
 }
