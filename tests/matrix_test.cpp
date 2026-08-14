@@ -1,3 +1,5 @@
+#include <expected>
+
 #include "../src/Matrix.h"
 #include <gtest/gtest.h>
 
@@ -155,4 +157,14 @@ TEST_F(MatrixTest, Submatrix2) {
     };
 
     EXPECT_EQ(submatrix(A, 0, 2), expected);
+}
+
+TEST_F(MatrixTest, Minor) {
+    Matrix A {
+        {3, 5, 0},
+        {2, -1, -7},
+        {6, -1, 5}
+    };
+
+    EXPECT_EQ(minor(A, 1, 0), 25);
 }

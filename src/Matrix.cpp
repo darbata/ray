@@ -6,6 +6,7 @@
 #include "Tuple.h"
 
 void print_matrix(const Matrix &a);
+float determinant2(const Matrix &a);
 
 bool operator==(Matrix a, Matrix b) {
     for (int i = 0; i < a.size(); i++) {
@@ -93,6 +94,14 @@ Matrix submatrix(const Matrix &a, int row, int col) {
 
     return result;
 
+}
+
+float minor(const Matrix &a, int row, int col) {
+    if (a.size() != 3 || a[0].size() != a.size()) {
+        throw std::logic_error("Must be 3x3 matrix");
+    }
+
+    return determinant2(submatrix(a, row, col));
 }
 
 float determinant2(const Matrix &a) {
