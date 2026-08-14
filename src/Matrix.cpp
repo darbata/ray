@@ -66,3 +66,41 @@ Matrix transpose(const Matrix &a) {
 
     return result;
 }
+
+Matrix submatrix(const Matrix &a, int row, int col) {
+    // return matrix with row and column removed
+    if (row < 0 || row >= a.size() || col < 0 || col >= a[0].size()) {
+        throw std::logic_error("Matrix submatrix not possible");
+    }
+
+    Matrix result {};
+
+    for (int i = 0; i < a.size(); i++) {
+        if (i == row) continue;
+        result.emplace_back();
+        for (int j = 0; j < a[0].size(); j++) {
+            if (j == col) continue;
+            result[i].push_back(a[i][j]);
+        }
+    }
+
+    return result;
+
+}
+
+float determinant2(const Matrix &a) {
+    if (a.size() != 2 || a[0].size() != a.size()) {
+        throw std::logic_error("this function only acts on 2x2 matrices");
+    }
+
+    return (a[0][0] * a[1][1]) - (a[1][0] * a[0][1]);
+}
+
+
+// float determinant3(const Matrix &a) {
+//     if (a.size() != 2 || a[0].size() != a.size()) {
+//         throw std::logic_error("this function only acts on 2x2 matrices");
+//     }
+//
+//
+// }

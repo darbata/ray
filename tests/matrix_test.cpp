@@ -123,3 +123,21 @@ TEST_F(MatrixTest, TransposeMatrix) {
 
     EXPECT_EQ(transpose(A), transposed);
 }
+
+TEST_F(MatrixTest, Submatrix) {
+    Matrix A {
+        {1, 2, 3, 4},
+        {5, 6, 7, 8},
+        {9, 10, 11, 12},
+        {13, 14, 15, 16}
+    };
+
+    // delete row 1 and column 2 (0-index)
+    Matrix expected {
+        {1, 2, 4},
+        {9, 10, 12},
+        {13, 14, 16}
+    };
+
+    EXPECT_EQ(submatrix(A, 1, 2), expected);
+}

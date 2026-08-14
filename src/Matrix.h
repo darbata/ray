@@ -13,6 +13,8 @@ Matrix operator*(const Matrix& a, const Matrix& b);
 Tuple operator*(const Matrix& a, const Tuple& b);
 
 Matrix transpose(const Matrix& a);
+Matrix submatrix(const Matrix& a, int row, int col);
 
+float determinate(const Matrix& a);
 
 #endif //RAY_MATRIX_H
