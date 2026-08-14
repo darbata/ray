@@ -12,4 +12,7 @@ bool operator!=(Matrix a, Matrix b);
 Matrix operator*(const Matrix& a, const Matrix& b);
 Tuple operator*(const Matrix& a, const Tuple& b);
 
+Matrix transpose(const Matrix& a);
+
+
 #endif //RAY_MATRIX_H

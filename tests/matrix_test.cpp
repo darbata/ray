@@ -79,7 +79,23 @@ TEST_F(MatrixTest, MatrixVectorMultiplication) {
     EXPECT_EQ(expected, result);
 }
 
-TEST_F(MatrixTest, IdentityMatrix) {
+TEST_F(MatrixTest, IdentityMatrixMatrixMultiplication) {
+    Matrix I {
+        {1, 0, 0, 0},
+        {0, 1, 0, 0},
+        {0, 0, 1, 0},
+        {0, 0, 0, 1},
+    };
+    Matrix A {
+        {1, 2, 3, 4},
+        {1, 2, 3, 4},
+        {1, 2, 3, 4},
+        {1, 2, 3, 4}
+    };
+    EXPECT_EQ(I*A, A);
+}
+
+TEST_F(MatrixTest, IdentityMatrixVectorMultiplication) {
     Matrix I {
         {1, 0, 0, 0},
         {0, 1, 0, 0},
@@ -88,4 +104,22 @@ TEST_F(MatrixTest, IdentityMatrix) {
     };
     Tuple v {1, 2, 3, 1};
     EXPECT_EQ(I*v, v);
+}
+
+TEST_F(MatrixTest, TransposeMatrix) {
+    Matrix A {
+        {1, 2, 3, 4},
+        {1, 2, 3, 4},
+        {1, 2, 3, 4},
+        {1, 2, 3, 4}
+    };
+
+    Matrix transposed {
+        {1, 1, 1, 1},
+        {2, 2, 2, 2},
+        {3, 3, 3, 3},
+        {4, 4, 4, 4}
+    };
+
+    EXPECT_EQ(transpose(A), transposed);
 }

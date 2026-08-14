@@ -44,10 +44,25 @@ Matrix operator* (const Matrix& a, const Matrix& b) {
 
 Tuple operator*(const Matrix &A, const Tuple &v) {
     std::vector<float> dimensions {};
-    for (int i = 0; i < A.size(); i++) {
-        Tuple a_row_vec {A[i][0], A[i][1], A[i][2], A[i][3]};
+    for (const auto & i : A) {
+        Tuple a_row_vec {i[0], i[1], i[2], i[3]};
         dimensions.push_back(dot(a_row_vec, v));
     }
 
     return Tuple(dimensions[0], dimensions[1], dimensions[2], dimensions[3]);
+}
+
+Matrix transpose(const Matrix &a) {
+    auto height = a.size();
+    auto width = a[0].size();
+
+    Matrix result(width, std::vector<float>(height, 0.0f));
+
+    for (int i = 0; i < height; i++) {
+        for (int j = 0; j < width; j++) {
+            result[i][j] = a[j][i];
+        }
+    }
+
+    return result;
 }
