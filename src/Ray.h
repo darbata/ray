@@ -3,14 +3,9 @@
 
 #include "Tuple.h"
 
-class Ray {
-private:
-    Tuple origin{};
-    Tuple direction{};
-public:
-    Ray(Tuple origin, Tuple direction);
-    Tuple getOrigin() const;
-    Tuple getDirection() const;
+struct Ray {
+    Tuple origin;
+    Tuple direction;
 };
 
 

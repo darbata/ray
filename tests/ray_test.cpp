@@ -8,8 +8,8 @@ class RayTest : public ::testing::Test {};
 TEST_F(RayTest, QueryRay) {
     Tuple origin {1, 2, 3, 1};
     Tuple direction {4, 5, 6, 0};
-    Ray ray = Ray(origin, direction);
+    Ray ray {origin, direction};
 
-    EXPECT_EQ(ray.getOrigin(), origin);
-    EXPECT_EQ(ray.getDirection(), direction);
+    EXPECT_EQ(ray.origin, origin);
+    EXPECT_EQ(ray.direction, direction);
 }
