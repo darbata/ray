@@ -18,7 +18,6 @@ int main() {
         c.write_pixel(x, y, white);
     }
 
-
     canvas_to_ppm(&c);
     return 0;
 }

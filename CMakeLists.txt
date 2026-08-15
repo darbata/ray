@@ -18,18 +18,22 @@ add_library(raylib
         src/Float.cpp
         src/Canvas.cpp
         src/Matrix.cpp
+        src/Ray.cpp
 )
 target_include_directories(raylib PUBLIC src)
 
 add_executable(ray src/main.cpp
         src/Transform.cpp
         src/Transformation.h
-        src/Transformation.h)
+        src/Transformation.h
+        src/Ray.cpp
+        src/Ray.h)
 target_link_libraries(ray PRIVATE raylib)
 
 add_executable(tests tests/matrix_test.cpp
         tests/tuple_test.cpp
-        tests/colour_test.cpp)
+        tests/colour_test.cpp
+        tests/ray_test.cpp)
 target_link_libraries(tests PRIVATE raylib GTest::gtest_main)
 
 include(GoogleTest)
