@@ -8,5 +8,8 @@ struct Ray {
     Tuple direction;
 };
 
+Tuple position(Ray ray, float t);
+
+
 
 #endif //RAY_RAY_H
