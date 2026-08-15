@@ -6,6 +6,9 @@ struct Tuple {
     float x, y, z, w;
 };
 
+Tuple point(float x, float y, float z);
+Tuple vector(float x, float y, float z);
+
 bool isPoint(Tuple t);
 bool isVector(Tuple t);
 

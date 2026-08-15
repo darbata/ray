@@ -6,6 +6,14 @@
 
 #include "Float.h"
 
+Tuple point(float x, float y, float z) {
+    return Tuple {x, y, z, 1};
+}
+
+Tuple vector(float x, float y, float z) {
+    return Tuple {x, y, z, 0};
+}
+
 bool isPoint(Tuple t) {
     return compare(t.w, 1.0);
 }
