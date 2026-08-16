@@ -10,7 +10,7 @@ Sphere randomSphere() {
     return {origin, radius};
 }
 
-std::vector<Intersection> intersect(Sphere sphere, Ray ray) {
+std::vector<Intersection> intersect(Sphere &sphere, Ray &ray) {
 
     // determines if ray intersect with ray at all use 'discriminant'
     Tuple sphere_to_ray = ray.origin - point(0, 0, 0);

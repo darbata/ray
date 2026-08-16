@@ -95,3 +95,11 @@ TEST_F(RayTest, AggregatingIntersects) {
     EXPECT_EQ(intersections[0].t, 1);
     EXPECT_EQ(intersections[1].t, 2);
 }
+
+TEST_F(RayTest, IntersectionIncludesObject) {
+    Ray ray {point(0, 0, 5), vector(0, 0, 1)};
+    Sphere s = randomSphere();
+    auto intersections = intersect(s, ray);
+    EXPECT_EQ(intersections[0].s, &s);
+    EXPECT_EQ(intersections[1].s, &s);
+}

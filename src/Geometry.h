@@ -16,6 +16,7 @@ struct Intersection {
 };
 
 Sphere randomSphere();
-std::vector<Intersection> intersect(Sphere, Ray);
+
+std::vector<Intersection> intersect(Sphere &sphere, Ray &ray);
 
 #endif //RAY_GEOMETRY_H
