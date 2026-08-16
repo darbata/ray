@@ -19,6 +19,7 @@ add_library(raylib
         src/Canvas.cpp
         src/Matrix.cpp
         src/Ray.cpp
+        src/Geometry.cpp
 )
 target_include_directories(raylib PUBLIC src)
 
@@ -27,7 +28,10 @@ add_executable(ray src/main.cpp
         src/Transformation.h
         src/Transformation.h
         src/Ray.cpp
-        src/Ray.h)
+        src/Ray.h
+        src/Geometry.h
+        src/Geometry.cpp
+)
 target_link_libraries(ray PRIVATE raylib)
 
 add_executable(tests tests/matrix_test.cpp
