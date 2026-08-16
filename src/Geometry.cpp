@@ -41,3 +41,20 @@ std::vector<Intersection> intersect(Sphere &sphere, Ray &ray) {
     return {i1, i2};
 }
 
+
+std::optional<Intersection> hit(std::vector<Intersection> &intersections) {
+    std::optional<Intersection> i;
+    float min_t = std::numeric_limits<float>::max();
+    for (auto &intersection : intersections) {
+        if (intersection.t > min_t || intersection.t < 0) {
+            continue;
+        }
+
+        if (intersection.t < min_t) {
+            min_t = intersection.t;
+            i = intersection;
+        }
+    }
+
+    return i;
+}

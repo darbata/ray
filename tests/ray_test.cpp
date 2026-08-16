@@ -103,3 +103,49 @@ TEST_F(RayTest, IntersectionIncludesObject) {
     EXPECT_EQ(intersections[0].s, &s);
     EXPECT_EQ(intersections[1].s, &s);
 }
+
+TEST_F(RayTest, HitOnPositiveIntersections) {
+    Sphere s = randomSphere();
+    auto i1 = Intersection{1, &s};
+    auto i2 = Intersection{2, &s};
+    std::vector<Intersection> intersections {i2, i1};
+    auto i = hit(intersections);
+
+    // expect least t value to be considered 'hit'
+    EXPECT_EQ(i.value().t, i1.t);
+}
+
+TEST_F(RayTest, HitOnSomeNegativeIntersection) {
+    Sphere s = randomSphere();
+    auto i1 = Intersection{-1, &s};
+    auto i2 = Intersection{1, &s};
+    std::vector<Intersection> intersections {i2, i1};
+    auto i = hit(intersections);
+
+    // only positive considered hits
+    EXPECT_TRUE(i.value().t >= 0);
+}
+
+TEST_F(RayTest, HitOnAllNegativeIntersection) {
+    Sphere s = randomSphere();
+    auto i1 = Intersection{-1, &s};
+    auto i2 = Intersection{-2, &s};
+    std::vector<Intersection> intersections {i2, i1};
+    auto i = hit(intersections);
+
+    // only positive considered hits
+    EXPECT_TRUE(i.has_value() == false);
+}
+
+TEST_F(RayTest, HitOnManyInteresections) {
+    Sphere s = randomSphere();
+    auto i1 = Intersection{5, &s};
+    auto i2 = Intersection{7, &s};
+    auto i3 = Intersection{-3, &s};
+    auto i4 = Intersection{2, &s};
+    std::vector<Intersection> intersections {i1, i2, i3, i4};
+    auto i = hit(intersections);
+
+    // always the least non-negative t
+    EXPECT_EQ(i.value().t, 2);
+}
