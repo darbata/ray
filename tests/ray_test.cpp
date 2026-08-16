@@ -166,3 +166,13 @@ TEST_F(RayTest, TransformRay) {
 
 }
 
+TEST_F(RayTest, SphereDefaultTransformatoinIsIdentity) {
+    Sphere s = randomSphere();
+    Matrix expected {
+        {1, 0, 0, 0},
+        {0, 1, 0, 0},
+        {0, 0, 1, 0},
+        {0, 0, 0, 1}
+    };
+    EXPECT_EQ(expected, s.transform);
+}
