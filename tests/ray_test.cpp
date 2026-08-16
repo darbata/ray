@@ -149,3 +149,20 @@ TEST_F(RayTest, HitOnManyInteresections) {
     // always the least non-negative t
     EXPECT_EQ(i.value().t, 2);
 }
+
+TEST_F(RayTest, TransformRay) {
+
+    auto o = point(1, 2, 3);
+    auto d = vector(0, 1, 0);
+    Ray ray {point(1, 2, 3), vector(0, 1, 0)};
+
+    transform(ray, translation(3, 4, 5));
+
+    Tuple expected = point(4, 6, 8);
+    EXPECT_EQ(ray.origin, expected);
+
+    // direction unchanged
+    EXPECT_EQ(ray.direction, d);
+
+}
+

@@ -5,3 +5,7 @@
 Tuple position(Ray ray, float t) {
     return ray.origin + ray.direction * t;
 }
+
+void transform(Ray &ray, Matrix transformation) {
+    ray.origin = transformation * ray.origin;
+}
