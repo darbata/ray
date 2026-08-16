@@ -36,7 +36,7 @@ TEST_F(RayTest, RayIntersectsSphereAtTwoPoints) {
     EXPECT_EQ(intersections.size(), 2);
 
     // not the same intercept
-    EXPECT_NE(intersections[0], intersections[1]);
+    EXPECT_NE(intersections[0].t, intersections[1].t);
 }
 
 TEST_F(RayTest, RayIntersectsAtTangent) {
@@ -49,7 +49,7 @@ TEST_F(RayTest, RayIntersectsAtTangent) {
     EXPECT_EQ(intersections.size(), 2);
 
     // same intercept
-    EXPECT_EQ(intersections[0], intersections[1]);
+    EXPECT_EQ(intersections[0].t, intersections[1].t);
 }
 
 TEST_F(RayTest, NoIntercept) {
@@ -71,8 +71,8 @@ TEST_F(RayTest, RayInsideSphere) {
     auto intersections = intersect(s, ray);
     EXPECT_EQ(intersections.size(), 2);
 
-    EXPECT_EQ(intersections[0], -1.0);
-    EXPECT_EQ(intersections[1], 1.0);
+    EXPECT_EQ(intersections[0].t, -1.0);
+    EXPECT_EQ(intersections[1].t, 1.0);
 }
 
 TEST_F(RayTest, SphereBehindRay) {
@@ -85,6 +85,13 @@ TEST_F(RayTest, SphereBehindRay) {
 
     // rays travel infinitely in both directions
     // therefore intersects in opposite direction to direction vector of ray
-    EXPECT_EQ(intersections[0], -6.0);
-    EXPECT_EQ(intersections[1], -4.0);
+    EXPECT_EQ(intersections[0].t, -6.0);
+    EXPECT_EQ(intersections[1].t, -4.0);
+}
+
+TEST_F(RayTest, AggregatingIntersects) {
+    Sphere s = randomSphere();
+    std::vector<Intersection> intersections {Intersection{1, &s}, Intersection{2, &s}};
+    EXPECT_EQ(intersections[0].t, 1);
+    EXPECT_EQ(intersections[1].t, 2);
 }

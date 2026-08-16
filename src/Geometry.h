@@ -4,13 +4,18 @@
 #include "Ray.h"
 #include <vector>
 
-struct Sphere {
+
+struct Sphere  {
     Tuple origin;
     float radius;
 };
 
-Sphere randomSphere();
+struct Intersection {
+    float t;
+    Sphere* s;
+};
 
-std::vector<float> intersect(Sphere, Ray);
+Sphere randomSphere();
+std::vector<Intersection> intersect(Sphere, Ray);
 
 #endif //RAY_GEOMETRY_H

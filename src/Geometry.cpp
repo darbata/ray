@@ -7,9 +7,10 @@ float discriminant(Sphere sphere, Ray ray);
 Sphere randomSphere() {
     Tuple origin = point(0, 0, 0);
     float radius = 1.0;
+    return {origin, radius};
 }
 
-std::vector<float> intersect(Sphere sphere, Ray ray) {
+std::vector<Intersection> intersect(Sphere sphere, Ray ray) {
 
     // determines if ray intersect with ray at all use 'discriminant'
     Tuple sphere_to_ray = ray.origin - point(0, 0, 0);
@@ -26,9 +27,17 @@ std::vector<float> intersect(Sphere sphere, Ray ray) {
 
     // now ray must intersect at least once or twice
     // find t solutions where ray intersects with sphere
-    return {
+
+    Intersection i1 {
         (-b - sqrt(discriminant)) / (2*a),
-        (-b + sqrt(discriminant)) / (2*a)
+        &sphere
     };
+
+    Intersection i2 {
+        (-b + sqrt(discriminant)) / (2*a),
+        &sphere
+    };
+
+    return {i1, i2};
 }
 
