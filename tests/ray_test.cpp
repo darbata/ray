@@ -156,17 +156,17 @@ TEST_F(RayTest, TransformRay) {
     auto d = vector(0, 1, 0);
     Ray ray {point(1, 2, 3), vector(0, 1, 0)};
 
-    transform(ray, translation(3, 4, 5));
+    Ray transformed = transform(ray, translation(3, 4, 5));
 
     Tuple expected = point(4, 6, 8);
-    EXPECT_EQ(ray.origin, expected);
+    EXPECT_TRUE(transformed.origin == expected);
 
     // direction unchanged
-    EXPECT_EQ(ray.direction, d);
+    EXPECT_EQ(transformed.direction, d);
 
 }
 
-TEST_F(RayTest, SphereDefaultTransformatoinIsIdentity) {
+TEST_F(RayTest, SphereDefaultTransformationIsIdentity) {
     Sphere s = randomSphere();
     Matrix expected {
         {1, 0, 0, 0},
@@ -175,4 +175,37 @@ TEST_F(RayTest, SphereDefaultTransformatoinIsIdentity) {
         {0, 0, 0, 1}
     };
     EXPECT_EQ(expected, s.transform);
+}
+
+TEST_F(RayTest, SphereSetTransform) {
+    Sphere s = randomSphere();
+    Matrix expected {
+        {1, 2, 3, 4},
+        {0, 1, 0, 0},
+        {0, 0, 1, 0},
+        {0, 0, 0, 1}
+    };
+    set_transform(s, expected);
+    EXPECT_EQ(expected, s.transform);
+}
+
+TEST_F(RayTest, IntersectingScaledSphere) {
+    Ray ray {point(0, 0, -5), vector(0, 0, 1)};
+    Sphere s = randomSphere();
+    auto m = scaling(2, 2, 2);
+    set_transform(s, m);
+
+    auto intersections = intersect(s, ray);
+    EXPECT_EQ(intersections[0].t, 3);
+    EXPECT_EQ(intersections[1].t, 7);
+}
+
+TEST_F(RayTest, IntersectingTranslatedSphere) {
+    Ray ray {point(0, 0, -5), vector(0, 0, 1)};
+    Sphere s = randomSphere();
+    auto m = translation(5, 0, 0);
+    set_transform(s, m);
+
+    auto intersections = intersect(s, ray);
+    EXPECT_EQ(intersections.size(), 0);
 }
