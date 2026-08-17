@@ -10,7 +10,7 @@ struct Ray {
 };
 
 Tuple position(Ray ray, float t);
-void transform(Ray& ray, Matrix transformation);
+Ray transform(const Ray &ray, const Matrix &transform);
 
 
 

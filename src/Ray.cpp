@@ -6,6 +6,9 @@ Tuple position(Ray ray, float t) {
     return ray.origin + ray.direction * t;
 }
 
-void transform(Ray &ray, Matrix transformation) {
-    ray.origin = transformation * ray.origin;
+Ray transform(const Ray &ray, const Matrix &transform) {
+    return {
+        transform * ray.origin,
+        transform * ray.direction
+    };
 }

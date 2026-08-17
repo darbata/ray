@@ -12,11 +12,15 @@ Sphere randomSphere() {
 
 std::vector<Intersection> intersect(Sphere &sphere, Ray &ray) {
 
-    // determines if ray intersect with ray at all use 'discriminant'
-    Tuple sphere_to_ray = ray.origin - point(0, 0, 0);
+    // apply sphere transformation
+    // can't transform sphere directly, so transform world space (including ray) itself by the inverse
+    auto localRay = transform(ray, inverse(sphere.transform));
 
-    auto a = dot(ray.direction, ray.direction);
-    auto b = 2 * dot(ray.direction, sphere_to_ray);
+    // determines if ray intersect with ray at all use 'discriminant'
+    Tuple sphere_to_ray = localRay.origin - point(0, 0, 0);
+
+    auto a = dot(localRay.direction, localRay.direction);
+    auto b = 2 * dot(localRay.direction, sphere_to_ray);
     auto c = dot(sphere_to_ray, sphere_to_ray) - 1;
 
     float discriminant = b*b - 4 * a * c;
@@ -58,3 +62,8 @@ std::optional<Intersection> hit(std::vector<Intersection> &intersections) {
 
     return i;
 }
+
+void set_transform(Sphere &sphere, Matrix& transform) {
+    sphere.transform = transform;
+}
+
