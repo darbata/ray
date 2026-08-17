@@ -23,7 +23,7 @@ Sphere randomSphere();
 std::vector<Intersection> intersect(Sphere &sphere, Ray &ray);
 std::optional<Intersection> hit(std::vector<Intersection> &intersections);
 
-void set_transform(Sphere& sphere, Matrix& transform);
+void set_transform(Sphere& sphere, const Matrix &transform);
 Ray transform(const Ray &ray, const Matrix& transform);
 
 

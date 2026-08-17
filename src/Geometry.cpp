@@ -63,7 +63,7 @@ std::optional<Intersection> hit(std::vector<Intersection> &intersections) {
     return i;
 }
 
-void set_transform(Sphere &sphere, Matrix& transform) {
+void set_transform(Sphere &sphere, const Matrix &transform) {
     sphere.transform = transform;
 }
 
