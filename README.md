@@ -6,9 +6,9 @@ Building ray tracer to achieve the following:
 
 Built directly from Linear Algebra concepts such as vectors and matrix transformations. Then 'rendered' by writing to `.ppm` formatted file.
 
-Current Progress: ray tracing sphere at world origin.
+Most recent demo:
 
-<img width="944" height="545" alt="image" src="https://github.com/user-attachments/assets/9009c9d2-e704-4a5f-a7b9-f68835b551d2" />
+<img width="1440" height="866" alt="image" src="https://github.com/user-attachments/assets/0f9918bf-fd43-4bc4-a0fc-24d96b4d83ea" />
 
 
 
